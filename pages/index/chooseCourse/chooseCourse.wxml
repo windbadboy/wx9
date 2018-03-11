@@ -1,0 +1,13 @@
+<!--pages/index/chooseCourse/chooseCourse.wxml-->
+
+<view class='chooseCourse' wx:for="{{course}}" wx:key="{{index}}">
+  <view class='courses-container'>
+    <view class='courses' hover-class='selectedcourses' bindtap='chooseNext' data-index="{{index}}">{{item.categoryName}}
+    </view>
+    <view hidden='{{item.isHidden}}'>
+      <view class='subCourses' wx:for="{{item.subType}}" wx:key="{{index}}">
+        {{item.subTypeName}}
+      </view>
+    </view>
+  </view>
+</view>
