@@ -27,10 +27,10 @@
 
 .subCourses {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90rpx;
-  width: 400rpx;  
+
   border:1px solid #ccc;
   background-color: #efe;
 
@@ -40,3 +40,21 @@
   background-color: orange;
 }
 
+.subCoursesContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    height: 90rpx;
+  width: 400rpx; 
+}
+
+.baseCourses {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90rpx;
+  width: 360rpx;  
+  border:1px solid #ccc;
+  background-color: #eff;  
+  font-size: 14px;
+}

@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    course : null
+    course : null,
+    subtypeHiddenIndex : 0,
   },
 
   /**
@@ -26,13 +27,21 @@ Page({
   chooseNext: function(e) {
   //console.log(e.currentTarget.dataset.categoryid)
   //console.log(e.currentTarget.dataset.index)
+  //  console.log(this.data.course[e.currentTarget.dataset.index].isHidden)
     if (this.data.course[e.currentTarget.dataset.index].isHidden ) {
   this.data.course[e.currentTarget.dataset.index].isHidden = false
+  this.data.subtypeHiddenIndex = e.currentTarget.dataset.index
+  for (var i = 0; i < this.data.course.length;i++) {
+    if (i != e.currentTarget.dataset.index) {
+      this.data.course[i].isHidden = true
+    }
+  }
     } else {
       this.data.course[e.currentTarget.dataset.index].isHidden = true     
     }
     this.setData({
-      course: this.data.course
+      course: this.data.course,
+      subtypeHiddenIndex: this.data.subtypeHiddenIndex
     })
  
   // wx.checkSession({
@@ -52,6 +61,24 @@ Page({
   //   }
   // })
 
+  },
+
+  chooseSubCourses: function (e) {
+ //   console.log(res)
+    if (this.data.course[this.data.subtypeHiddenIndex].subType[e.currentTarget.dataset.index].isHidden) {
+      this.data.course[this.data.subtypeHiddenIndex].subType[e.currentTarget.dataset.index].isHidden = false
+      for (var i = 0; i < this.data.course[this.data.subtypeHiddenIndex].subType.length; i++) {
+        if (i != e.currentTarget.dataset.index) {
+          this.data.course[this.data.subtypeHiddenIndex].subType[i].isHidden = true
+        } 
+      }     
+    } else {
+      this.data.course[this.data.subtypeHiddenIndex].subType[e.currentTarget.dataset.index].isHidden = true     
+    }
+
+    this.setData({
+      course : this.data.course
+    })
   },
   callback: function (res) {
 //        console.log('cc:'+res.data)
