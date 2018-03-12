@@ -11,7 +11,7 @@
         </view>
         <view hidden="{{item.isHidden}}">
           <view class='baseCourses' wx:for="{{item.baseType}}" wx:key="{{index}}">
-            {{item.baseTypeName}}
+            <view class='baseCoursesContent' bindtap='chooseBaseCourses' data-index='{{index}}'>{{item.baseTypeName}}</view>
           </view>
         </view>
       </view>

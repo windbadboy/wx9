@@ -54,7 +54,16 @@
   align-items: center;
   height: 90rpx;
   width: 360rpx;  
-  border:1px solid #ccc;
+
+}
+
+.baseCoursesContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90rpx;
+  width: 360rpx;    
+    border:1px solid #ccc;
   background-color: #eff;  
   font-size: 14px;
 }
