@@ -22,9 +22,15 @@ Page({
     })
   },
   realitem: function () {
-
+    wx.showToast({
+      title: '暂未开放',
+    })
   },
-
+  iSubimit : function() {
+    wx.showToast({
+      title: '暂未开放',
+    })   
+  },
   getLogin: function (res) {
     //登录成功后返回session_key(自有)和userId
     //根据是否选课
@@ -39,8 +45,8 @@ Page({
     } else {
       this.setData({
         bgcolor_syl: '#0078d7',
-        bgcolor_zt: '#0078d7',
-        bgcolor_other: '#0078d7'
+        bgcolor_zt: '#eee',
+        bgcolor_other: '#eee'
 
       })
     }
@@ -57,11 +63,13 @@ Page({
     wx.request({
       url: app.globalData.url + 'wxlogin/getuserInfo.php?which=getcurrentCourse&userId=' + app.globalData.userId + '&session_key=' + app.globalData.session_key,
       success: res => {
-        //              console.log(res)
+//         console.log(res)
         // console.log(Object.prototype.toString.call(res.data[0]) === '[object Array]')
         //  console.log(!(typeof (res.data[0]) == 'undefined'))
         if (!(typeof (res.data[0]) == 'undefined')) {
           wx.setStorageSync('currentCourse', res.data[0].currentCourse)
+          wx.setStorageSync('categoryId', res.data[0].categoryId)         
+          app.globalData.categoryId = res.data[0].categoryId
           //  console.log('111:'+res.data[0].currentCourse)
           this.setData({
             courseInfo: '己选:' + res.data[0].baseTypeName
@@ -69,6 +77,7 @@ Page({
         }
         else {
           wx.setStorageSync('currentCourse', null)
+          wx.setStorageSync('categoryId', null) 
           this.setData({
             courseInfo: '请先选择课程'
           })

@@ -27,8 +27,9 @@ App({
     userInfo: null,
     userId : '',
     currentCourse : '',
-    url:'http://140.143.87.178/',
+    url:'https://www.badteacher.club/',
     session_key: '',
+    categoryId : '',
   },
 
   callback: function (res) {

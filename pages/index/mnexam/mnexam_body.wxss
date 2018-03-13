@@ -1,6 +1,7 @@
 /* pages/index/mnexam/mnexam_body.wxss */
 .answer_letter {
   font-weight: 700;
+  padding: 10rpx;
 
 }
 .body-container {
@@ -45,8 +46,7 @@
   border-bottom: 1px solid #aaa;
   height: 100rpx;
   margin: 8rpx;  
-  position: fixed;
-  bottom:0;
+
 }
 
 .counter {
@@ -94,9 +94,9 @@ margin-bottom: 10rpx;
 .body-answer {
   display: flex;
   flex-direction: column;
-
   width: 100%;
   border-bottom: 1px solid #aaa;
+
 
 }
 
@@ -104,7 +104,8 @@ margin-bottom: 10rpx;
 display: flex;
 flex-direction: row;
 width: 100%;
-margin: 65rpx;
+padding: 20rpx;
+
 }
 
 .body-bottom {

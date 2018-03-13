@@ -17,7 +17,7 @@
       <view class='choose-course otherCourse' style="background-color:{{bgcolor_syl}}" bindtap='mnexam'>模拟试题</view>
 
       <view class='choose-course otherCourse' style="background-color:{{bgcolor_zt}}" bindtap='realitem'>历年真题</view>
-      <view class='choose-course otherCourse' style="background-color:{{bgcolor_other}}">我来出题</view>
+      <view class='choose-course otherCourse' style="background-color:{{bgcolor_other}}" bindtap='iSubimit'>我来出题</view>
     </view>
   </view>
 </view>

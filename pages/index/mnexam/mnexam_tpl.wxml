@@ -16,21 +16,27 @@
       <block wx:if="{{examSingleData.typeId==1}}">
         <text>{{examSingleData.tempSn}}. {{examSingleData.firstSentence}}<text class='keyword'>{{examSingleData.keyWord}}</text>{{examSingleData.lastSentence}}</text>
       </block>
+      <block wx:elif="{{examSingleData.typeId==7}}">
+
+        <text>{{examSingleData.tempSn}}. {{examSingleData.examBody}}</text>
+
+
+      </block>
       <block wx:else>
         <scroll-view scroll-y style="height: 100px; margin-bottom:10rpx;">
-         <text>{{examSingleData.examBody}}</text>       
+          <text>{{examSingleData.examBody}}</text>
         </scroll-view>
 
       </block>
     </view>
     <view class='body-answer'>
-      <view wx:if="{{examSingleData.typeId!=1}}">
+      <view wx:if="{{examSingleData.typeId!=1 && examSingleData.typeId!=7}}">
         <text>{{examSingleData.tempSn}}. {{examSingleData.answerTitle}}</text>
       </view>
       <radio-group class="radio-group" bindchange="radioChange" data-index="{{index}}">
         <label class="radio" wx:for="{{examSingleData.examAnswer}}" class='radio-answer' wx:key="{{index}}">
           <radio value="{{item.answer_letter}}" checked="{{item.checked}}" />
-          <text class='answer_letter'>{{item.answer_letter}}. </text>{{item.answerContent}}
+          <text class='answer_letter'>{{item.answer_letter}}. {{item.answerContent}}</text>
         </label>
       </radio-group>
     </view>

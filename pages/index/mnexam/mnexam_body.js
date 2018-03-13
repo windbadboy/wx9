@@ -137,7 +137,7 @@ Page({
     else {
       wx.checkSession({
         success: res => {
-          var url = app.globalData.url + 'wxlogin/getuserInfo.php?which=getExam&courseId=' + wx.getStorageSync('currentCourse') + '&userId=' + app.globalData.userId + '&session_key=' + app.globalData.session_key + '&itemNumber=' + options.itemNumber
+          var url = app.globalData.url + 'wxlogin/getuserInfo.php?which=getExam&courseId=' + wx.getStorageSync('currentCourse') + '&userId=' + app.globalData.userId + '&session_key=' + app.globalData.session_key + '&itemNumber=' + options.itemNumber + '&categoryId=' + app.globalData.categoryId
           //        console.log(url)
           wx.showLoading({
             title: '正在加载数据',
