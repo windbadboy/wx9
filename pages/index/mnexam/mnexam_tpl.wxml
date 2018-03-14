@@ -26,8 +26,13 @@
         <scroll-view scroll-y style="height: 100px; margin-bottom:10rpx;">
           <text>{{examSingleData.examBody}}</text>
         </scroll-view>
-
       </block>
+      <view class='examBodyImg' wx:if="{{examSingleData.examBodyImg!=''}}">
+        <image src="http://www.badteacher.club/{{examSingleData.examBodyImg}}" style="width:350px;height:140px"></image>
+      </view>
+      <view class='examBodyOther' wx:if="{{examSingleData.examBodyOther!=''}}">
+      <text>{{examSingleData.examBodyOther}}</text>
+      </view>
     </view>
     <view class='body-answer'>
       <view wx:if="{{examSingleData.typeId!=1 && examSingleData.typeId!=7}}">

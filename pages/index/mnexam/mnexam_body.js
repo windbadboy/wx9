@@ -123,7 +123,9 @@ Page({
       userInfo: app.globalData.userInfo,
     })
     pause= false
+    //计时器开始计时
     countdown(this)
+    //错题重做
     if(options.retry==1) {
 //      console.log(JSON.parse(options.wrongData))
       var wrongData ={}
