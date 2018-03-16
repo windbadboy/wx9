@@ -32,10 +32,11 @@ Page({
     var temp1 = options.examData
 
 //  console.log('inResult afterCatch:')
- // console.log(temp1)
+//  console.log(temp1)
 
    //处理错题重做
     var tempData = JSON.parse(temp1)
+    console.log(JSON.parse(temp1))
     this.data.tempMiddle = JSON.parse(temp1)
     var tempError = 0
     var tempRight = 0
@@ -50,9 +51,9 @@ Page({
           str += '"firstRight":' + '"1"}'          
       } else {
         str +=  '"firstRight":' + '"0"}'         
-        for(var j = 0; j<tempData[i].examAnswer.length;j++) {
-          tempData[i].examAnswer[j].checked = false
-        }
+        // for(var j = 0; j<tempData[i].examAnswer.length;j++) {
+        //   tempData[i].examAnswer[j].checked = 0
+        // }
           tempData[i].userAnswer = ''
           tempData[i].isSubmitted = false
           tempWrong.push(tempData[i])
@@ -95,7 +96,7 @@ Page({
       rightRate : parseInt((tempRight /(tempError+tempRight))*100) +'%',
       wrongData: tempWrong,
     })
-
+//console.log(this.data.examData)
     wx.checkSession({
       success: res => {
         var url = app.globalData.url + 'wxlogin/getuserInfo.php?which=uploadExam&userId=' + app.globalData.userId + '&session_key=' + app.globalData.session_key
@@ -169,7 +170,7 @@ Page({
       this.setData({
         examData : this.data.examData
       })
-      console.log(this.data.examData)
+//      console.log(this.data.examData)
     }
 
   },
@@ -224,6 +225,12 @@ Page({
   },
   errorRetry: function(res) {
   if(this.data.examError!=0) {
+    for (var i = 0; i < this.data.wrongData.length; i++) {
+      for (var j = 0; j < this.data.wrongData[i].examAnswer.length; j++) {
+        this.data.wrongData[i].examAnswer[j].checked = 0
+      }
+
+    }
     wx.redirectTo({
       url: 'mnexam_body?num=' + this.data.examError + '&retry=1&wrongData=' + JSON.stringify(this.data.wrongData) + '&examPage=0',
     })

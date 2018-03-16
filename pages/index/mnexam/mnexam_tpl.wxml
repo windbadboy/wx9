@@ -16,8 +16,7 @@
       <block wx:if="{{examSingleData.typeId==1}}">
         <text>{{examSingleData.tempSn}}. {{examSingleData.firstSentence}}<text class='keyword'>{{examSingleData.keyWord}}</text>{{examSingleData.lastSentence}}</text>
       </block>
-      <block wx:elif="{{examSingleData.typeId==7}}">
-
+      <block wx:elif="{{examSingleData.typeId==7 || examSingleData.typeId==8}}">
         <text>{{examSingleData.tempSn}}. {{examSingleData.examBody}}</text>
 
 
@@ -31,19 +30,30 @@
         <image src="http://www.badteacher.club/{{examSingleData.examBodyImg}}" style="width:350px;height:140px"></image>
       </view>
       <view class='examBodyOther' wx:if="{{examSingleData.examBodyOther!=''}}">
-      <text>{{examSingleData.examBodyOther}}</text>
+        <text>{{examSingleData.examBodyOther}}</text>
       </view>
     </view>
     <view class='body-answer'>
-      <view wx:if="{{examSingleData.typeId!=1 && examSingleData.typeId!=7}}">
+      <view wx:if="{{examSingleData.typeId!=1 && examSingleData.typeId!=7 && examSingleData.typeId!=8}}">
         <text>{{examSingleData.tempSn}}. {{examSingleData.answerTitle}}</text>
       </view>
-      <radio-group class="radio-group" bindchange="radioChange" data-index="{{index}}">
-        <label class="radio" wx:for="{{examSingleData.examAnswer}}" class='radio-answer' wx:key="{{index}}">
-          <radio value="{{item.answer_letter}}" checked="{{item.checked}}" />
-          <text class='answer_letter'>{{item.answer_letter}}. {{item.answerContent}}</text>
-        </label>
-      </radio-group>
+      <view wx:if="{{examSingleData.typeId==8}}">
+        <checkbox-group bindchange="checkboxChange">
+          <label  wx:for="{{examSingleData.examAnswer}}" wx:key="{{index}}" class="check-box">
+            <checkbox value="{{item.answer_letter}}" checked="{{item.checked==1}}" />
+
+            <text class='answer_letter'>{{item.answer_letter}}. {{item.answerContent}}</text>
+          </label>
+        </checkbox-group>
+      </view>
+      <view wx:else>
+        <radio-group class="radio-group" bindchange="radioChange" data-index="{{index}}">
+          <label class="radio" wx:for="{{examSingleData.examAnswer}}" class='radio-answer' wx:key="{{index}}">
+            <radio value="{{item.answer_letter}}" checked="{{item.checked==1}}" />
+            <text class='answer_letter'>{{item.answer_letter}}. {{item.answerContent}}</text>
+          </label>
+        </radio-group>
+      </view>
     </view>
   </view>
 

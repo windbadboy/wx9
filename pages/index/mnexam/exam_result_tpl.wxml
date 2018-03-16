@@ -23,19 +23,32 @@
       </block>
     </view>
     <view class='body-answer'>
-      <view wx:if="{{typeId!=1}}">
+      <view wx:if="{{typeId!=1 && typeId!=7 && typeId!=8}}">
         <text>{{tempSn}}. {{answerTitle}}</text>
       </view>
-      <radio-group class="radio-group" bindchange="radioChange" data-index="{{index}}">
-        <label class="radio" wx:for="{{examAnswer}}" class='radio-answer' wx:key="{{index}}">
-          <radio value="{{item.answerSn}}" checked="{{item.checked}}" color='green' wx:if="{{item.answerRight}}" disabled='true' />
-          <radio value="{{item.answerSn}}" checked="{{item.checked}}" color="red" wx:else disabled='true' />
-          <view wx:if="{{item.answerRight}}" class='colorGreen'>
-            <text class='answer_letter'>{{item.answer_letter}}. </text>{{item.answerContent}}　　正确答案</view>
-          <view wx:else>
-            <text class='answer_letter'>{{item.answer_letter}}. </text>{{item.answerContent}}</view>
-        </label>
-      </radio-group>
+      <view wx:if="{{typeId==8}}">
+        <checkbox-group>
+          <label  wx:for="{{examAnswer}}" wx:key="{{index}}" class="check-box">
+            <checkbox value="{{item.answer_letter}}" checked="{{item.checked==1}}" disabled='true'/>
+            <view wx:if="{{item.answerRight}}" class='colorGreen'>
+              <text class='answer_letter'>{{item.answer_letter}}. </text>{{item.answerContent}}　　正确答案</view>
+            <view wx:else>
+              <text class='answer_letter'>{{item.answer_letter}}. </text>{{item.answerContent}}</view>
+          </label>
+        </checkbox-group>
+      </view>
+      <view wx:else>
+        <radio-group class="radio-group" bindchange="radioChange" data-index="{{index}}">
+          <label class="radio" wx:for="{{examAnswer}}" class='radio-answer' wx:key="{{index}}">
+            <radio value="{{item.answerSn}}" checked="{{item.checked==1}}" color='green' wx:if="{{item.answerRight}}" disabled='true' />
+            <radio value="{{item.answerSn}}" checked="{{item.checked==1}}" color="red" wx:else disabled='true' />
+            <view wx:if="{{item.answerRight}}" class='colorGreen'>
+              <text class='answer_letter'>{{item.answer_letter}}. </text>{{item.answerContent}}　　正确答案</view>
+            <view wx:else>
+              <text class='answer_letter'>{{item.answer_letter}}. </text>{{item.answerContent}}</view>
+          </label>
+        </radio-group>      
+      </view>
     </view>
   </view>
   <view class='body-analysis'>

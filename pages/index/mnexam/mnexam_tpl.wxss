@@ -82,7 +82,7 @@ margin-bottom: 10rpx;
 
   width: 100%;
   border-bottom: 1px solid #aaa;
-
+background-color:red;
 }
 
 .radio-answer {
@@ -90,6 +90,7 @@ display: flex;
 flex-direction: row;
 width: 100%;
 margin: 65rpx;
+
 }
 
 .body-bottom {

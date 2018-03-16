@@ -108,6 +108,14 @@ padding: 20rpx;
 
 }
 
+.check-box {
+display: flex;
+flex-direction: row;
+width: 100%;
+padding: 20rpx;
+
+}
+
 .body-bottom {
   display: flex;
 }
